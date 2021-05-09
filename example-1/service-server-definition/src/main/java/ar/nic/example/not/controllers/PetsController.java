@@ -3,6 +3,7 @@ package ar.nic.example.not.controllers;
 import ar.nic.example.openapi.ApiUtil;
 import ar.nic.example.openapi.PetsApi;
 import ar.nic.example.openapi.model.Pet;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class PetsController implements PetsApi {
 
     private final NativeWebRequest request;
 
-    @org.springframework.beans.factory.annotation.Autowired
+    @Autowired
     public PetsController(NativeWebRequest request) {
         this.request = request;
     }
