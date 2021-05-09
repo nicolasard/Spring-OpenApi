@@ -1,0 +1,49 @@
+openapi: '3.0.2'
+info:
+  title: Tokenize card sevice
+  description: This is an API service to create or get all your tokenized cards
+  version: '1.0'
+servers:
+  - url: https://api.server.test/v1
+components:
+  schemas:
+    card:
+      type: object
+      properties:
+        pan:
+          type: string
+        dueDate:
+          type: string
+        cvv:
+          type: string
+    token:
+      type: object
+      properties:
+        token:
+          type: string
+        validFrom:
+          type: string
+        validTo:
+          type: string
+paths:
+  /card:
+    get:
+      description: Get all the tokenized cards
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/token'
+    post:
+      description: Tokenize a card
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/token'
