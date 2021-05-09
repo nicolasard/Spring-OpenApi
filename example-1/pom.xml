@@ -8,9 +8,14 @@
     <version>0.1.0</version>
     <packaging>pom</packaging>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.2.RELEASE</version>
+    </parent>
+
     <modules>
         <module>service-server-definition</module>
-        <module>service-server-implementation</module>
     </modules>
 
 </project>
