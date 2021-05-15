@@ -6,10 +6,16 @@ info:
 servers:
   - url: https://api.server.test/v1
 components:
+  securitySchemes:
+    basicAuth:     # <-- arbitrary name for the security scheme
+      type: http
+      scheme: basic
   schemas:
     card:
       type: object
       properties:
+        name:
+          type: string
         pan:
           type: string
         dueDate:
@@ -21,13 +27,17 @@ components:
       properties:
         token:
           type: string
+        name:
+          type: string
+        brand:
+          type: string
         validFrom:
           type: string
         validTo:
           type: string
 paths:
   /card:
-    get:
+    get:  
       description: Get all the tokenized cards
       responses:
         '200':
@@ -40,6 +50,11 @@ paths:
                   $ref: '#/components/schemas/token'
     post:
       description: Tokenize a card
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/card'
       responses:
         '200':
           description: OK
